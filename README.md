@@ -29,3 +29,9 @@ https://www.macoratti.net/19/02/dock_imgfile1.htm
 
         `docker exec -it xterminal /bin/bash`
     
+* Rede
+    Aprentemente o Docker cria uma subrede para rodar os containers
+    - No meu caso ficou assim:
+
+        server:     172.17.0.2
+        xterminal:  172.17.0.3
