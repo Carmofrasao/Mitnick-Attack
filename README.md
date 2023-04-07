@@ -1,3 +1,24 @@
 # Mitnick Attack
 
-https://www.youtube.com/watch?v=pf7-3jHXEz0&list=RDCMUCJnKVGmXRXrH49Tvrx5X0Sw&index=3&ab_channel=LINUXtips
+https://www.macoratti.net/19/02/dock_imgfile1.htm
+
+* Instalando o docker:
+    - Na pasta ./server
+        `docker build -t server:1.0 .`
+
+    - Na pasta ./Xterminal
+        `docker build -t xterminal:1.0 .`
+
+    - Para ter certeza ue deu certo:
+        `docker images`
+        - Tem que aparecer as duas imagens
+
+* Rodando os servidores:
+    `docker run --name server -p 10000:222 server:1.0`
+    `docker run --name xterminal -p 10001:222 terminal:1.0`
+
+* Entrando nos dockers:
+    - Em outros novos terminais:
+        `docker exec -it server /bin/bash`
+        `docker exec -it xterminal /bin/bash`
+    
