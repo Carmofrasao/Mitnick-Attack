@@ -5,11 +5,11 @@ https://www.macoratti.net/19/02/dock_imgfile1.htm
 * Instalando o docker:
     - Na pasta ./server
 
-        `docker build -t server:1.0 .`
+        `docker build --rm -t server:1.0 .`
 
     - Na pasta ./Xterminal
 
-        `docker build -t xterminal:1.0 .`
+        `docker build --rm -t xterminal:1.0 .`
 
     - Para ter certeza ue deu certo:
 
