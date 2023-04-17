@@ -13,7 +13,7 @@ https://www.macoratti.net/19/02/dock_imgfile1.htm
 
     - Para ter certeza ue deu certo:
 
-        `docker images`
+        `docker image ls`
         - Tem que aparecer as duas imagens
 
 * Rodando os servidores:
@@ -37,3 +37,39 @@ https://www.macoratti.net/19/02/dock_imgfile1.htm
         server:     172.17.0.2
 
         xterminal:  172.17.0.3
+
+<!-- Daqui para baixo nada é garantido -->
+
+* Adicionando nome de host em /etc/hosts
+
+    - No servidor:
+
+        `echo "127.0.0.1    localhost
+        ::1     localhost ip6-localhost ip6-loopback
+        fe00::0 ip6-localnet
+        ff00::0 ip6-mcastprefix
+        ff02::1 ip6-allnodes
+        ff02::2 ip6-allrouters
+        172.17.0.2      <host_server>
+        172.17.0.3      <host_client>" > /etc/hosts`
+
+    - No cliente:
+
+        `echo "127.0.0.1    localhost
+        ::1     localhost ip6-localhost ip6-loopback
+        fe00::0 ip6-localnet
+        ff00::0 ip6-mcastprefix
+        ff02::1 ip6-allnodes
+        ff02::2 ip6-allrouters
+        172.17.0.3      <host_client>
+        172.17.0.2      <host_server>" > /etc/hosts`
+
+* Adicionando usuários em ~/.rhosts:
+
+    - No servidor:
+
+        `echo "172.17.0.3      <host_client>" > ~/.rhosts`
+
+    - No cliente:
+
+        `echo "172.17.0.2   <host_server>" > ~/.rhosts`
