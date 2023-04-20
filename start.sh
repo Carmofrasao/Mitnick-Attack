@@ -9,7 +9,7 @@ if [ "$(docker ps -aq --filter name=server)" ]; then
     docker start server
 else
     echo "Server container doesnt exists, creating"
-    docker run --name server -p 10000:222 base:1.0&
+    docker run --privileged --name server -p 10000:222 base:1.0&
 fi
 
 if [ "$(docker ps -aq --filter name=xterminal)" ]; then
@@ -17,7 +17,7 @@ if [ "$(docker ps -aq --filter name=xterminal)" ]; then
     docker start xterminal
 else
     echo "Xterminal container doesnt exists, creating"
-    docker run --name xterminal -p 10001:222 base:1.0&
+    docker run --privileged --name xterminal -p 10001:222 base:1.0&
 fi
 
 if [ "$(docker ps -aq --filter name=atacante)" ]; then
@@ -25,12 +25,14 @@ if [ "$(docker ps -aq --filter name=atacante)" ]; then
     docker start atacante
 else
     echo "Xterminal container doesnt exists, creating"
-    docker run --name atacante -p 10001:222 base:1.0&
+    docker run --privileged --name atacante -p 10002:222 base:1.0&
 fi
 
 
 gnome-terminal \
     --tab --title="xterminal" --command "docker exec -it xterminal /bin/bash" \
+    --tab --title="atacante" --command "docker exec -it atacante /bin/bash" \
+    --tab --title="atacante" --command "docker exec -it atacante /bin/bash" \
     --tab --title="atacante" --command "docker exec -it atacante /bin/bash" \
     --tab --title="server" --command "docker exec -it server /bin/bash" &> /dev/null
 
